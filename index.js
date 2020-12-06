@@ -6,6 +6,7 @@ for (var i = 0; i < numberDrums; i++) {
     var buttonInnerHTML = this.innerHTML;
 
     makeSound(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
 
   });
 }
@@ -13,6 +14,7 @@ for (var i = 0; i < numberDrums; i++) {
 addEventListener("keypress", function (event) {
 
   makeSound(event.key);
+  buttonAnimation(event.key);
 
 });
 //FUNCTION FOR THE BUTON AND CLICK
@@ -58,6 +60,16 @@ function makeSound (key) {
   }
 }
 
+function buttonAnimation(currentplay) {
+
+  var activeButton = document.querySelector("." + currentplay);
+  activeButton.classList.add("pressed");
+
+  setTimeout(function() {
+    activeButton.classList.remove("pressed");
+  }, 100);
+
+}
 
 
 //var audio = new Audio('sounds/snare.mp3');
